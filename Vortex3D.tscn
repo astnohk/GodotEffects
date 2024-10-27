@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://s4vdl0lv27fw"]
+
+[ext_resource type="Script" path="res://Vortex3D.gd" id="1_14r6w"]
+[ext_resource type="Shader" path="res://Vortex3D.gdshader" id="2_ispgj"]
+[ext_resource type="Texture2D" uid="uid://lqy4evcim61g" path="res://icon.svg" id="3_pnowq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uw5kt"]
+render_priority = 0
+shader = ExtResource("2_ispgj")
+shader_parameter/damper = 13.0
+shader_parameter/point1 = Vector2(-0.4, 0)
+shader_parameter/point2 = Vector2(0, 0)
+shader_parameter/point3 = Vector2(0.4, 0)
+shader_parameter/rot1 = 24.0
+shader_parameter/rot2 = -25.0
+shader_parameter/rot3 = 36.0
+shader_parameter/tex = ExtResource("3_pnowq")
+
+[sub_resource type="QuadMesh" id="QuadMesh_snxru"]
+material = SubResource("ShaderMaterial_uw5kt")
+subdivide_width = 2048
+subdivide_depth = 2048
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_14r6w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_snxru")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+fov = 58.2503
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+light_energy = 0.5

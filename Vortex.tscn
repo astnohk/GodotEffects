@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bktne0ehtpg3i"]
+
+[ext_resource type="Script" path="res://Vortex.gd" id="1_ka45r"]
+[ext_resource type="Shader" path="res://Vortex.gdshader" id="2_npe31"]
+[ext_resource type="Texture2D" uid="uid://lqy4evcim61g" path="res://icon.svg" id="3_tg5pl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_no12w"]
+shader = ExtResource("2_npe31")
+shader_parameter/damper = 10.0
+shader_parameter/point1 = Vector2(0.25, 0.5)
+shader_parameter/point2 = Vector2(0.5, 0.5)
+shader_parameter/point3 = Vector2(0.75, 0.5)
+shader_parameter/rot1 = 17.395
+shader_parameter/rot2 = -20.97
+shader_parameter/rot3 = 21.72
+shader_parameter/tex = ExtResource("3_tg5pl")
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ka45r")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_no12w")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

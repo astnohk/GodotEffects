@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://bnhr0efcw0deb"]
+
+[ext_resource type="Shader" path="res://RotateRect.gdshader" id="1_kd1vh"]
+[ext_resource type="Script" path="res://Sprite.gd" id="2_ybsca"]
+[ext_resource type="Shader" path="res://RotateCircle.gdshader" id="3_g747x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uafdk"]
+shader = ExtResource("1_kd1vh")
+shader_parameter/t = 14.9715
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fkvs7"]
+orientation = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fy1kc"]
+shader = ExtResource("3_g747x")
+shader_parameter/t = 14.9715
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_i0mkw"]
+orientation = 2
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_uafdk")
+position = Vector2(574, 301)
+scale = Vector2(45, 45)
+mesh = SubResource("PlaneMesh_fkvs7")
+script = ExtResource("2_ybsca")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_fy1kc")
+position = Vector2(330, 268)
+scale = Vector2(45, 45)
+mesh = SubResource("PlaneMesh_i0mkw")
+script = ExtResource("2_ybsca")
